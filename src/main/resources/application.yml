@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: product-service
+  # DataSource Config
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/byte_dance
+    username: root
+    password: 123123
+#    password: a12bCd3_W45pUq6
+
+  # Redis Config
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
+      password: foobared
+      timeout: 60000
+  # Nacos
+  cloud:
+    nacos:
+      config:
+        import-check:
+          enabled: false
+#        server-addr: 1.94.168.12:8848
+        server-addr: 127.0.0.1:8848
+        file-extension: yml
+        refresh-enabled: true
+        enable-remote-sync-config: true
+        namespace: public
+
+#Dubbo
+dubbo:
+
+  application:
+    name: product-service
+  protocol:
+    name: dubbo
+    port: 20880
+  registry:
+    address: nacos://127.0.0.1:8848
